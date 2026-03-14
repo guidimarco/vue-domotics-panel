@@ -1,10 +1,16 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+  <div id="app" class="app-container bg-background text-text">
+    <div class="content-wrapper">
+      <header class="content-header glass">Header</header>
+
+      <main class="content-view">
+        <router-view />
+      </main>
+    </div>
+
+    <nav class="app-nav-bar glass">Nav</nav>
+
+    <portal-target name="modal-destination" multiple />
   </div>
 </template>
 
@@ -14,18 +20,41 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  @screen tablet {
+    flex-direction: row-reverse;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
+  .content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .content-header {
+      height: $bar-height;
+    }
+
+    .content-view {
+      flex: 1;
+    }
+  }
+
+  .app-nav-bar {
+    height: $bar-height;
+
+    @screen tablet {
+      width: $tablet-nav-bar-width;
+      height: 100%;
+    }
+
+    @screen laptop {
+      width: $laptop-nav-bar-width;
     }
   }
 }

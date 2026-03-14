@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Styles
+
+.glass {
+    @apply bg-surface/80 backdrop-blur-xl border border-white/10;
+}

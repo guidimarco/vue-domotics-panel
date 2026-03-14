@@ -41,6 +41,7 @@ L'**header** è presente solo nelle pagine di gestione dei dispositivi e si comp
 
 Scelte progettuali effettuate:
 
+- [Stack](#stack)
 - [Mobile-First](#mobile-first)
 - [Sessione e accessi](#sessione-e-accessi)
 - [Routing (Vue Router)](#routing-vue-router)
@@ -49,6 +50,15 @@ Scelte progettuali effettuate:
 - [Esempio: Zona](#esempio-zona)
 - [Esempio: Dispositivo](#esempio-dispositivo)
 - [Gestione dello Stato (Vuex)](#gestione-dello-stato-vuex)
+
+### Stack
+
+- **Node** `20.10.0`
+- **Vue** `2.6.12` (@vue/cli)
+- **VueX** per la gestione dello stato
+- **Tailwind CSS**
+- [**Portal-Vue**](https://portal-vue.linusb.org/) per la gestione delle modali
+- Google Material Icons CDN
 
 ### Mobile-First
 
