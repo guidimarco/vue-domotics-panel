@@ -3,6 +3,8 @@ import VueRouter, { RouteConfig } from "vue-router";
 
 import HomeView from "../views/HomeView.vue";
 import SettingsView from "../views/SettingsView.vue";
+
+import ZoneLayout from "@/components/layouts/ZoneLayout.vue";
 import AvView from "../views/AvView.vue";
 import LightsView from "../views/LightsView.vue";
 import HvacView from "../views/HvacView.vue";
@@ -23,7 +25,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/zones/:zoneId",
     name: "zone",
-    component: { render: (h: any) => h("router-view") },
+    component: ZoneLayout,
     redirect: { name: "home" },
     children: [
       {

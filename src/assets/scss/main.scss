@@ -15,5 +15,6 @@
 }
 
 .bar-style {
+  height: $bar-height;
   @apply bg-surface border border-white/40;
 }

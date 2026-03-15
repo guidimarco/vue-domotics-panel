@@ -27,3 +27,13 @@ export interface ZonesStore {
   zones: Zone[];
   zone_devices: Device[];
 }
+
+export interface ModalData {
+  modalId: string | null;
+  component: string | null;
+  props: object;
+}
+
+export interface ModalStore extends ModalData {
+  showModal: boolean;
+}

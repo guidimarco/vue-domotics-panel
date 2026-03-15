@@ -28,25 +28,27 @@ export default {
   }),
   getters: {
     isAdmin: (appState: AppState) => appState.user_role === "admin",
+    activeZoneId: (appState: AppState) => appState.active_zone_id,
     allowedZones: (appState: AppState) => appState.zone_ids,
     enabledModules: (appState: AppState) => appState.enabled_modules,
   },
   mutations: {
-    SET_APP_STATE: (state: StoreState, payload: Partial<AppState>) => {
-      state.appState = { ...state.appState, ...payload };
+    SET_APP_STATE: (state: AppState, payload: Partial<AppState>) => {
+      Object.assign(state, payload);
     },
   },
   actions: {
     setActiveZoneId: (
       { commit }: ActionContext<AppState, StoreState>,
-      payload: Pick<AppState, "active_zone_id">
+      activeZoneId: string
     ) => {
       /**
        * TODO: Aggiungere validazione:
        * - Validare active_zone_id rispetto alle zone ammesse dalla sessione (state.appState.zone_ids).
        * - Validare active_zone_id rispetto alle zone visibili (state.zones.zones).
        */
-      commit("SET_APP_STATE", payload);
+      console.log("setActiveZoneId", activeZoneId);
+      commit("SET_APP_STATE", { active_zone_id: activeZoneId });
     },
     setActiveAvId: (
       { commit }: ActionContext<AppState, StoreState>,

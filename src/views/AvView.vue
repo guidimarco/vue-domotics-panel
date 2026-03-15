@@ -23,8 +23,8 @@ export default Vue.extend({
   },
   methods: {
     openAvModal() {
-      this.$root.$emit("open-modal", {
-        title: "A/V",
+      this.$root.$emit("toggle-modal", {
+        modalId: "av-modal",
         component: null,
         props: {},
       });

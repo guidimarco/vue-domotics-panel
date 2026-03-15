@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col items-center justify-center gap-4 pt-4 px-8">
+  <div class="flex flex-col justify-center gap-4 pt-4 px-8">
     <h3 class="text-text font-medium text-2xl">{{ title }}</h3>
     <slot />
   </div>

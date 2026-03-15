@@ -1,28 +1,30 @@
 <template>
   <div id="app" class="app-container bg-background text-text">
-    <div class="content-wrapper">
-      <app-header class="content-header" />
-
-      <main class="content-view">
-        <router-view />
-
-        <portal-target name="main-modal-target" multiple />
-      </main>
-    </div>
+    <main class="content-wrapper">
+      <router-view />
+    </main>
 
     <nav-bar class="app-nav-bar" />
 
-    <base-modal v-if="showModal" :title="modalTitle" @close="showModal = false">
-      <component :is="modalComponent" v-bind="modalProps" />
+    <base-modal
+      v-if="showModal"
+      :show-close-button="modalData.showCloseButton"
+      @close="closeModal"
+    >
+      <component :is="modalData.component" v-bind="modalData.props" />
     </base-modal>
   </div>
 </template>
 
 <script lang="ts">
-import Vue, { Component } from "vue";
+import Vue from "vue";
+import { mapActions, mapGetters } from "vuex";
 import AppHeader from "@/components/layouts/AppHeader.vue";
 import NavBar from "@/components/layouts/NavBar.vue";
 import BaseModal from "@/components/ui/BaseModal.vue";
+import { ModalData } from "@/store/store.types";
+// Modali
+import ZoneMenu from "@/components/menus/ZoneMenu.vue";
 
 export default Vue.extend({
   name: "App",
@@ -30,38 +32,23 @@ export default Vue.extend({
     AppHeader,
     NavBar,
     BaseModal,
+    ZoneMenu,
   },
-  data() {
-    return {
-      showModal: false,
-      modalTitle: "Titolo",
-      modalComponent: null as Component | null,
-      modalProps: {},
-    };
+  computed: {
+    ...mapGetters("modalStore", ["showModal", "modalData"]),
   },
   watch: {
     $route() {
-      this.showModal = false;
+      this.closeModal();
     },
   },
+  methods: {
+    ...mapActions("modalStore", ["closeModal", "toggleModal"]),
+  },
   mounted() {
-    this.$root.$on(
-      "open-modal",
-      ({
-        title,
-        component,
-        props,
-      }: {
-        title: string;
-        component: Component;
-        props: object;
-      }) => {
-        this.showModal = true;
-        this.modalTitle = title;
-        this.modalComponent = component;
-        this.modalProps = props;
-      }
-    );
+    this.$root.$on("toggle-modal", (modalData: ModalData) => {
+      this.toggleModal(modalData);
+    });
   },
 });
 </script>
@@ -82,20 +69,10 @@ export default Vue.extend({
   }
 
   .content-wrapper {
-    @apply flex flex-col flex-1;
-
-    .content-header {
-      height: $bar-height;
-    }
-
-    .content-view {
-      @apply relative flex-1;
-    }
+    @apply relative flex flex-col flex-1;
   }
 
   .app-nav-bar {
-    height: $bar-height;
-
     @screen landscape {
       @apply h-full;
       width: $landscape-sidebar-width;

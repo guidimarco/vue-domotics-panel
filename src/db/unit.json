@@ -12,7 +12,7 @@
     { "id": "zone-003", "name": "Upper Salon", "visible": false },
     { "id": "zone-004", "name": "Vip Port", "visible": true },
     { "id": "zone-005", "name": "Vip STBD", "visible": false },
-    { "id": "zone-006", "name": "Guest Port", "visible": false },
+    { "id": "zone-006", "name": "Guest Port", "visible": true },
     { "id": "zone-007", "name": "Guest STBD", "visible": false },
     { "id": "zone-008", "name": "AFT MD", "visible": false },
     { "id": "zone-009", "name": "AFT UD", "visible": false },
