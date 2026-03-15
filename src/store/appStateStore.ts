@@ -1,5 +1,6 @@
 import { ActionContext } from "vuex";
 import { StoreState, AppState } from "./store.types";
+import { Device } from "@/types/app.types";
 
 // Mock Data
 import sessionJson from "@/db/session.json";
@@ -25,12 +26,15 @@ export default {
     // App data (dynamic)
     active_zone_id: activeZoneId,
     enabled_modules: Array.from(enabledModules),
-    active_av_id: null,
+    active_av: null,
+    loading_av: false,
   }),
   getters: {
     isAdmin: (appState: AppState) => appState.user_role === "admin",
     brand: (appState: AppState) => appState.brand,
     activeZoneId: (appState: AppState) => appState.active_zone_id,
+    activeAv: (appState: AppState) => appState.active_av,
+    loadingAv: (appState: AppState) => appState.loading_av,
     allowedZones: (appState: AppState) => appState.zone_ids,
     enabledModules: (appState: AppState) => appState.enabled_modules,
   },
@@ -49,14 +53,28 @@ export default {
        * - Validare active_zone_id rispetto alle zone ammesse dalla sessione (state.appState.zone_ids).
        * - Validare active_zone_id rispetto alle zone visibili (state.zones.zones).
        */
-      console.log("setActiveZoneId", activeZoneId);
       commit("SET_APP_STATE", { active_zone_id: activeZoneId });
     },
     setActiveAvId: (
       { commit }: ActionContext<AppState, StoreState>,
-      activeAvId: string
+      activeAvName: string
     ) => {
-      commit("SET_APP_STATE", { active_av_id: activeAvId });
+      /**
+       * Workaround per semplificare:
+       * - gli passo un device invece di un id
+       * - use setTimeout per simulare una chiamata API
+       * - guardo loading_av dal componente
+       */
+      commit("SET_APP_STATE", {
+        active_av: activeAvName,
+        loading_av: true,
+      });
+      setTimeout(() => {
+        commit("SET_APP_STATE", { loading_av: false });
+      }, 2000);
+    },
+    resetActiveAv: ({ commit }: ActionContext<AppState, StoreState>) => {
+      commit("SET_APP_STATE", { active_av: null, loading_av: false });
     },
   },
 };

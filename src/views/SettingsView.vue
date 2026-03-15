@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center">
+  <div class="view-wrapper">
     <menu-wrapper title="Impostazioni">
       <template #default>
         <div role="radiogroup" class="w-full grid grid-cols-3 gap-4">

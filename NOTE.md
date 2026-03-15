@@ -189,8 +189,9 @@ interface AppState {
     // ^ ^ ^ Zona selezionata
     enabled_modules: Array<'av' | 'lights' | 'hvac'>,
     // ^ ^ ^ Moduli visualizzabili: dipendono dai dispositivi associati alla zona
-    active_av_ids: string[],
-    // ^ ^ ^ Dispositivo A/V attivo
+    active_av: string,
+    loading_av: boolean,
+    // ^ ^ ^ Dispositivo AV attivo (workaround per semplificare)
 }
 ```
 

@@ -13,7 +13,8 @@ export interface AppState {
   zone_ids: string[];
   active_zone_id: string;
   enabled_modules: string[];
-  active_av_ids: string[];
+  active_av: Device | null;
+  loading_av: boolean;
 }
 
 export interface SettingsStore {

@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col justify-center gap-4 pt-4 px-8">
-    <h3 class="text-text font-medium text-2xl">{{ title }}</h3>
+  <div class="flex flex-col justify-center gap-4">
+    <h3 v-if="title" class="text-text font-medium text-2xl">{{ title }}</h3>
     <slot />
   </div>
 </template>
@@ -13,7 +13,8 @@ export default Vue.extend({
   props: {
     title: {
       type: String,
-      required: true,
+      required: false,
+      default: null,
     },
   },
 });

@@ -18,3 +18,15 @@
   height: $bar-height;
   @apply bg-surface border border-white/40;
 }
+
+.view-wrapper {
+  @apply h-full overflow-y-auto flex flex-col items-center justify-start gap-4 p-4;
+
+  &.center-content {
+    @apply justify-center;
+  }
+}
+
+.main-title {
+  @apply text-2xl font-medium;
+}

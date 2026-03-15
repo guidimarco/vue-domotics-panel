@@ -6,11 +6,7 @@
 
     <nav-bar class="app-nav-bar" />
 
-    <base-modal
-      v-if="showModal"
-      :show-close-button="modalData.showCloseButton"
-      @close="closeModal"
-    >
+    <base-modal v-if="showModal" @close="closeModal">
       <component :is="modalData.component" v-bind="modalData.props" />
     </base-modal>
   </div>
@@ -25,6 +21,7 @@ import BaseModal from "@/components/ui/BaseModal.vue";
 import { ModalData } from "@/store/store.types";
 // Modali
 import ZoneMenu from "@/components/menus/ZoneMenu.vue";
+import AvMenu from "@/components/menus/AvMenu.vue";
 
 export default Vue.extend({
   name: "App",
@@ -33,6 +30,7 @@ export default Vue.extend({
     NavBar,
     BaseModal,
     ZoneMenu,
+    AvMenu,
   },
   computed: {
     ...mapGetters("modalStore", ["showModal", "modalData"]),

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="view-wrapper">
     <h1>Luci</h1>
   </div>
 </template>

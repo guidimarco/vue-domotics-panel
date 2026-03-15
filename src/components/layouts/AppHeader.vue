@@ -49,11 +49,10 @@ export default Vue.extend({
     },
     isMenuModalOpen(): boolean {
       const self = this as any;
-      return self.showModal && self.modalId === "menu-modal";
+      return self.showModal && self.modalId === "zone-menu-modal";
     },
     activeZoneName(): string {
       const self = this as any;
-      console.log(self.activeZoneId, self.getZoneById(self.activeZoneId));
       if (self.activeZoneId) {
         const zone = self.getZoneById(self.activeZoneId);
         if (zone) {
@@ -66,14 +65,14 @@ export default Vue.extend({
   methods: {
     toggleMenuModal() {
       this.$root.$emit("toggle-modal", {
-        modalId: "menu-modal",
+        modalId: "zone-menu-modal",
         component: "ZoneMenu",
         props: {},
       });
     },
     toggleAvModal() {
       this.$root.$emit("toggle-modal", {
-        modalId: "av-modal",
+        modalId: "av-control-modal",
         component: null,
         props: {},
       });

@@ -19,6 +19,9 @@ export default {
     getZoneById: (state: ZonesStore) => (zoneId: string) => {
       return state.zones.find((zone) => zone.id === zoneId);
     },
+    getAvDevices: (state: ZonesStore) => () => {
+      return state.zone_devices.filter((device) => device.type === "av");
+    },
   },
   mutations: {
     SET_ZONE_VISIBILITY_MUTATION: (

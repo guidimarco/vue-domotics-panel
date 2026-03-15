@@ -15,13 +15,6 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "BaseModal",
-  props: {
-    showCloseButton: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-  },
 });
 </script>
 
@@ -33,7 +26,7 @@ export default Vue.extend({
 .modal-content {
   transition: all 0.3s ease-out;
   overflow-y: auto;
-  @apply bg-background relative w-full h-full p-4 border-0 flex flex-col items-center justify-center;
+  @apply bg-background relative w-full h-full p-4 border-0 flex flex-col items-center justify-start;
 
   @screen tablet {
     max-width: 650px;
