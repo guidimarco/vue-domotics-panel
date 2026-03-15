@@ -37,14 +37,8 @@ export default {
     },
   },
   actions: {
-    setSessionData: (
-      { commit }: ActionContext<StoreState, StoreState>,
-      payload: Pick<AppState, "user_role" | "unit_id" | "zone_ids">
-    ) => {
-      commit("SET_APP_STATE", payload);
-    },
     setActiveZoneId: (
-      { commit }: ActionContext<StoreState, StoreState>,
+      { commit }: ActionContext<AppState, StoreState>,
       payload: Pick<AppState, "active_zone_id">
     ) => {
       /**
@@ -55,7 +49,7 @@ export default {
       commit("SET_APP_STATE", payload);
     },
     setActiveAvId: (
-      { commit }: ActionContext<StoreState, StoreState>,
+      { commit }: ActionContext<AppState, StoreState>,
       activeAvId: string
     ) => {
       commit("SET_APP_STATE", { active_av_id: activeAvId });

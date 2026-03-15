@@ -14,19 +14,23 @@ export default {
     },
   }),
   getters: {
-    selectedSatOption: (state: StoreState) => state.settingsStore.sat.selected,
+    satOptions: (state: SettingsStore) => state.sat.options,
+    selectedSatOption: (state: SettingsStore) => state.sat.selected,
   },
   mutations: {
     SET_SETTINGS: (state: StoreState, payload: Partial<SettingsStore>) => {
       state.settingsStore = { ...state.settingsStore, ...payload };
     },
+    SET_SELECTED_SAT: (state: SettingsStore, newValue: string) => {
+      state.sat.selected = newValue;
+    },
   },
   actions: {
     changeSelectedSat: (
-      { commit }: ActionContext<StoreState, StoreState>,
-      payload: Pick<SettingsStore, "sat">
+      { commit }: ActionContext<SettingsStore, StoreState>,
+      newValue: string
     ) => {
-      commit("SET_SETTINGS", payload);
+      commit("SET_SELECTED_SAT", newValue);
     },
   },
 };
