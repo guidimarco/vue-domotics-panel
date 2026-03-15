@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-// Styles
+// Layout
 
 .glass {
     @apply bg-surface/80 backdrop-blur-xl border border-white/10;
+}
+
+@layer utilities {
+    .orizzontal {
+        @apply flex-row items-center justify-start;
+    }
 }

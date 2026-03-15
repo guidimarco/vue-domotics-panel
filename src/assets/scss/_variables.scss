@@ -5,14 +5,17 @@
 // Layout
 
 $bar-height: 72px;
-$tablet-nav-bar-width: 240px;
-$laptop-nav-bar-width: 280px;
+$touch-target: 56px;
+
+$landscape-sidebar-width: 80px;
+$tablet-sidebar-width: 240px;
+$laptop-sidebar-width: 280px;
+
 
 // Spacing
 
-$mobile-touch-target: 56px;
-$mobile-padding: 8px;
-$mobile-gap: 8px;
+$padding-sm: 8px;
+$gap-sm: 8px;
 
-$tablet-padding: 16px;
-$tablet-gap: 16px;
+$padding-md: 16px;
+$gap-md: 16px;

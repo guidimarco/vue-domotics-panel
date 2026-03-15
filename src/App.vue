@@ -1,18 +1,32 @@
 <template>
   <div id="app" class="app-container bg-background text-text">
     <div class="content-wrapper">
-      <header class="content-header glass">Header</header>
+      <app-header class="content-header" />
 
       <main class="content-view">
         <router-view />
       </main>
     </div>
 
-    <nav class="app-nav-bar glass">Nav</nav>
+    <nav-bar class="app-nav-bar" />
 
     <portal-target name="modal-destination" multiple />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+import AppHeader from "@/components/layouts/AppHeader.vue";
+import NavBar from "@/components/layouts/NavBar.vue";
+
+export default Vue.extend({
+  name: "App",
+  components: {
+    AppHeader,
+    NavBar,
+  },
+});
+</script>
 
 <style lang="scss">
 #app {
@@ -23,18 +37,14 @@
 }
 
 .app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  @apply flex flex-col h-screen;
 
-  @screen tablet {
-    flex-direction: row-reverse;
+  @screen landscape {
+    @apply flex-row-reverse;
   }
 
   .content-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col flex-1;
 
     .content-header {
       height: $bar-height;
@@ -48,13 +58,17 @@
   .app-nav-bar {
     height: $bar-height;
 
-    @screen tablet {
-      width: $tablet-nav-bar-width;
-      height: 100%;
+    @screen landscape {
+      @apply h-full;
+      width: $landscape-sidebar-width;
     }
 
-    @screen laptop {
-      width: $laptop-nav-bar-width;
+    @screen tablet {
+      width: $tablet-sidebar-width;
+    }
+
+    @screen desktop {
+      width: $laptop-sidebar-width;
     }
   }
 }

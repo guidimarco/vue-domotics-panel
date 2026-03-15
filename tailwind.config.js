@@ -6,9 +6,10 @@ module.exports = {
     extend: {
       screens: {
         mobile: "480px",
+        landscape: "628px",
         tablet: "768px",
-        laptop: "1024px",
-        desktop: "1200px",
+        desktop: "1024px",
+        wide: "1200px",
       },
       colors: {
         background: "#000000",
