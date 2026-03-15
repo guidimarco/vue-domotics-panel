@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-bar glass" aria-label="Barra di navigazione">
+  <nav class="nav-bar bar-style" aria-label="Barra di navigazione">
     <router-link
       v-for="routeObj in routes"
       :key="routeObj.id"

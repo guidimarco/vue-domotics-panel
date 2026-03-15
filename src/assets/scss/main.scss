@@ -4,12 +4,16 @@
 
 // Layout
 
-.glass {
-    @apply bg-surface/80 backdrop-blur-xl border border-white/10;
+@layer utilities {
+  .button-primary {
+    @apply bg-surface rounded-xl;
+  }
+
+  .orizzontal {
+    @apply flex-row items-center justify-start;
+  }
 }
 
-@layer utilities {
-    .orizzontal {
-        @apply flex-row items-center justify-start;
-    }
+.bar-style {
+  @apply bg-surface border border-white/40;
 }

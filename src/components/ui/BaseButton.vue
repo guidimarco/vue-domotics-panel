@@ -44,10 +44,14 @@ export default Vue.extend({
   min-height: $touch-target;
   min-width: $touch-target;
 
+  &.orizzontal {
+    padding: $padding-sm $padding-md;
+  }
+
   @screen tablet {
+    padding: $padding-sm $padding-md;
     min-height: unset;
     min-width: unset;
-    padding: $padding-sm $padding-md;
   }
 }
 </style>

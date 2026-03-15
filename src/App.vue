@@ -5,25 +5,63 @@
 
       <main class="content-view">
         <router-view />
+
+        <portal-target name="main-modal-target" multiple />
       </main>
     </div>
 
     <nav-bar class="app-nav-bar" />
 
-    <portal-target name="modal-destination" multiple />
+    <base-modal v-if="showModal" :title="modalTitle" @close="showModal = false">
+      <component :is="modalComponent" v-bind="modalProps" />
+    </base-modal>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue, { Component } from "vue";
 import AppHeader from "@/components/layouts/AppHeader.vue";
 import NavBar from "@/components/layouts/NavBar.vue";
+import BaseModal from "@/components/ui/BaseModal.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
     AppHeader,
     NavBar,
+    BaseModal,
+  },
+  data() {
+    return {
+      showModal: false,
+      modalTitle: "Titolo",
+      modalComponent: null as Component | null,
+      modalProps: {},
+    };
+  },
+  watch: {
+    $route() {
+      this.showModal = false;
+    },
+  },
+  mounted() {
+    this.$root.$on(
+      "open-modal",
+      ({
+        title,
+        component,
+        props,
+      }: {
+        title: string;
+        component: Component;
+        props: object;
+      }) => {
+        this.showModal = true;
+        this.modalTitle = title;
+        this.modalComponent = component;
+        this.modalProps = props;
+      }
+    );
   },
 });
 </script>
@@ -51,7 +89,7 @@ export default Vue.extend({
     }
 
     .content-view {
-      flex: 1;
+      @apply relative flex-1;
     }
   }
 
