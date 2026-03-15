@@ -20,6 +20,7 @@ export default {
     // Session data
     user_role: userRole,
     unit_id: sessionJson.unit_id,
+    brand: unitJson.brand,
     zone_ids: zoneIds,
     // App data (dynamic)
     active_zone_id: activeZoneId,
@@ -28,6 +29,7 @@ export default {
   }),
   getters: {
     isAdmin: (appState: AppState) => appState.user_role === "admin",
+    brand: (appState: AppState) => appState.brand,
     activeZoneId: (appState: AppState) => appState.active_zone_id,
     allowedZones: (appState: AppState) => appState.zone_ids,
     enabledModules: (appState: AppState) => appState.enabled_modules,

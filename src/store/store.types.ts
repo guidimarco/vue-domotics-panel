@@ -9,6 +9,7 @@ export interface StoreState {
 export interface AppState {
   user_role: string;
   unit_id: string;
+  brand: string;
   zone_ids: string[];
   active_zone_id: string;
   enabled_modules: string[];
