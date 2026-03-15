@@ -1,0 +1,23 @@
+{
+  "id": "unit-id-001",
+  "brand": "AZIMUT Grande",
+  "sat": {
+    "options": ["SKY IT", "SKY UK", "SKY NZ", "HUMAX", "NO SAT"],
+    "selected": "SKY IT",
+    "default": "SKY IT"
+  },
+  "zones": [
+    { "id": "zone-001", "name": "Master Cabin", "visible": false },
+    { "id": "zone-002", "name": "MSalon + Ext", "visible": false },
+    { "id": "zone-003", "name": "Upper Salon", "visible": false },
+    { "id": "zone-004", "name": "Vip Port", "visible": true },
+    { "id": "zone-005", "name": "Vip STBD", "visible": false },
+    { "id": "zone-006", "name": "Guest Port", "visible": false },
+    { "id": "zone-007", "name": "Guest STBD", "visible": false },
+    { "id": "zone-008", "name": "AFT MD", "visible": false },
+    { "id": "zone-009", "name": "AFT UD", "visible": false },
+    { "id": "zone-010", "name": "BOW", "visible": false },
+    { "id": "zone-011", "name": "Sundeck", "visible": false },
+    { "id": "zone-012", "name": "Beach", "visible": false }
+  ]
+}

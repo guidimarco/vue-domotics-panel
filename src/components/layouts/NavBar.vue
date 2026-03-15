@@ -1,7 +1,7 @@
 <template>
   <nav class="nav-bar bar-style" aria-label="Barra di navigazione">
     <router-link
-      v-for="routeObj in routes"
+      v-for="routeObj in visibleRoutes"
       :key="routeObj.id"
       :to="getLocation(routeObj)"
       custom
@@ -22,6 +22,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { RawLocation } from "vue-router";
+import { mapGetters } from "vuex";
 import { NavConfig, navConfig } from "@/config/navigation";
 import BaseButton from "@/components/ui/BaseButton.vue";
 
@@ -34,6 +35,18 @@ export default Vue.extend({
     return {
       routes: navConfig,
     };
+  },
+  computed: {
+    ...mapGetters("appState", ["isAdmin", "enabledModules"]),
+    visibleRoutes(): NavConfig[] {
+      const self = this as any;
+      return this.routes.filter((route) => {
+        if (route.adminOnly && !self.isAdmin) return false;
+        if (route.module && !self.enabledModules.includes(route.module))
+          return false;
+        return true;
+      });
+    },
   },
   methods: {
     getLocation(routeObj: NavConfig): RawLocation {

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "dev-av-001",
+    "type": "av",
+    "name": "Satellite",
+    "power": true,
+    "data": { "type": "satellite" }
+  },
+  {
+    "id": "dev-av-002",
+    "type": "av",
+    "name": "Dtv",
+    "power": false,
+    "data": { "type": "dtv" }
+  },
+  {
+    "id": "dev-av-003",
+    "type": "av",
+    "name": "AppleTV",
+    "power": true,
+    "data": { "type": "apple_tv" }
+  },
+  {
+    "id": "dev-av-004",
+    "type": "av",
+    "name": "BluOS",
+    "power": false,
+    "data": { "type": "blu_os" }
+  },
+  {
+    "id": "dev-light-001",
+    "type": "lights",
+    "name": "Main Lights",
+    "power": true,
+    "data": { "level": 80 }
+  },
+  {
+    "id": "dev-light-002",
+    "type": "lights",
+    "name": "Spotlights",
+    "power": false,
+    "data": { "level": 0 }
+  },
+  {
+    "id": "dev-light-003",
+    "type": "lights",
+    "name": "LED Strip",
+    "power": true,
+    "data": { "level": 50 }
+  },
+  {
+    "id": "dev-hvac-001",
+    "type": "hvac",
+    "name": "Air Con",
+    "power": true,
+    "data": {
+      "temp": 24.5,
+      "setpoint": 22.0,
+      "mode": "cool",
+      "fan_speed": "auto",
+      "fan_speed_value": 2
+    }
+  },
+  {
+    "id": "dev-hvac-002",
+    "type": "hvac",
+    "name": "Master Clima",
+    "power": false,
+    "data": {
+      "temp": 22.0,
+      "setpoint": 21.0,
+      "mode": "heat",
+      "fan_speed": "low",
+      "fan_speed_value": 1
+    }
+  }
+]

@@ -19,12 +19,12 @@ L'app è pensata prevalentemente per device piccoli (mobile) e l'interfaccia è 
 La **navigazione** è dinamica, le pagine mostrate dipendono dalla disponibilità di dispositivi associati alla zona selezionata. La struttura delle pagine prevede:
 
 - **Home**: landing page con logo whitelabel e informazioni di contorno
-- **A/V** (*): permette la selezione e la gestione dei dispositivi A/V (on/off, telecomando, ...)
-- **Luci** (*): permette l'accensione/spegnimento delle luci
-- **HVAC** (*): permette la gestione dei dispositivi caldo/freddo (on/off, temperatura, ...)
+- **A/V** (\*): permette la selezione e la gestione dei dispositivi A/V (on/off, telecomando, ...)
+- **Luci** (\*): permette l'accensione/spegnimento delle luci
+- **HVAC** (\*): permette la gestione dei dispositivi caldo/freddo (on/off, temperatura, ...)
 - **Impostazioni**: area protetta (da password) con impostazioni da admin (zone, SAT, ...)
 
-(*) Dipende dai dispositivi associati alla zona.
+(\*) Dipende dai dispositivi associati alla zona.
 
 L'**header** è presente solo nelle pagine di gestione dei dispositivi e si compone di:
 
@@ -63,6 +63,7 @@ Scelte progettuali effettuate:
 ### Mobile-First
 
 L'utilizzo principale è mobile, quindi ho replicato l'app mobile e l'ho adattata a schermi larghi con le seguenti modifiche:
+
 - Barra di navigazione inferiore > **Side-bar laterale sinistra**
 - Dropdown sorgenti e zone > **Modali**
 
@@ -76,9 +77,9 @@ Inoltre sono state aggiunte le informazioni che definiscono l'ambito di validit�
 
 ```json
 {
-    "role": "guest",
-    "unit_id": "unit_id",
-    "zone_ids": ["zone-001", "zone-002"]
+  "role": "guest",
+  "unit_id": "unit_id",
+  "zone_ids": ["zone-001", "zone-002"]
 }
 ```
 
@@ -108,16 +109,16 @@ Per gestire unità complesse e variabili (quali hotel, yacht, case) ho pensato d
 
 ```ts
 interface Unit {
-    id: string,
-    brand: string,              // "AZIMUT Grande"
-    settings: {
-        sat: {
-            options: string[],  // ["SKY IT", "SKY UK", "SKY NZ", "HUMAX", "NO SAT"]
-            selected: string,   // "NO SAT"
-            default: string,
-        }
-    },
-    zones: Zone[],
+  id: string;
+  brand: string; // "AZIMUT Grande"
+  settings: {
+    sat: {
+      options: string[]; // ["SKY IT", "SKY UK", "SKY NZ", "HUMAX", "NO SAT"]
+      selected: string; // "NO SAT"
+      default: string;
+    };
+  };
+  zones: Zone[];
 }
 ```
 
@@ -125,10 +126,10 @@ interface Unit {
 
 ```ts
 interface Zone {
-    id: string,
-    name: string,               // "Master Cabin"
-    visible: boolean,
-    devices: Device[],
+  id: string;
+  name: string; // "Master Cabin"
+  visible: boolean;
+  devices: Device[];
 }
 ```
 
@@ -156,7 +157,7 @@ Per le luci:
 
 ```ts
 interface Data {
-    level: Number,
+  level: Number;
 }
 ```
 
@@ -164,11 +165,11 @@ Per il clima:
 
 ```ts
 interface Data {
-    temp: Number,
-    setpoint: Number,
-    mode: string, // "cool"
-    fan_speed: string, // "auto"
-    fan_speed_value: Number,
+  temp: Number;
+  setpoint: Number;
+  mode: string; // "cool"
+  fan_speed: string; // "auto"
+  fan_speed_value: Number;
 }
 ```
 
@@ -194,5 +195,4 @@ interface AppState {
 ```
 
 - `settings`: impostazioni generali e sat.
-- `zones`: lista delle zone associate alla sessione.
-- `devices`: lista dei dispositivi associati alla zona attiva. Idealmente vengono recuperati a ogni cambio di zona.
+- `zones`: lista delle zone associate alla sessione e lista dei devices associati alla zona (`zone_devices`).

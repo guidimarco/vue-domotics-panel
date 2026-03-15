@@ -11,6 +11,8 @@ export interface NavConfig {
   label: string;
   icon: string;
   needZoneId: boolean;
+  module?: string;
+  adminOnly?: boolean;
 }
 
 export const navConfig: Array<NavConfig> = [
@@ -26,6 +28,7 @@ export const navConfig: Array<NavConfig> = [
     routeName: "av",
     label: "A/V",
     icon: "tv",
+    module: "av",
     needZoneId: true,
   },
   {
@@ -33,6 +36,7 @@ export const navConfig: Array<NavConfig> = [
     routeName: "lights",
     label: "Lights",
     icon: "lightbulb",
+    module: "lights",
     needZoneId: true,
   },
   {
@@ -40,6 +44,7 @@ export const navConfig: Array<NavConfig> = [
     routeName: "hvac",
     label: "HVAC",
     icon: "thermostat",
+    module: "hvac",
     needZoneId: true,
   },
   {
@@ -48,5 +53,6 @@ export const navConfig: Array<NavConfig> = [
     label: "Settings",
     icon: "settings",
     needZoneId: false,
+    adminOnly: true,
   },
 ];

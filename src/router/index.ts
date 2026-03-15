@@ -19,10 +19,6 @@ const routes: Array<RouteConfig> = [
     path: "/settings",
     name: "settings",
     component: SettingsView,
-    meta: {
-      icon: "settings",
-      label: "Impostazioni",
-    },
   },
   {
     path: "/zones/:zoneId",
