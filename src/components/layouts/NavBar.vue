@@ -1,24 +1,49 @@
 <template>
   <nav class="nav-bar glass" aria-label="Barra di navigazione">
-    <base-button
-      v-for="i in 3"
-      :key="i"
-      class="nav-bar-button tablet:orizzontal"
-      icon="home"
-      label="Home"
-      aria-label="Home"
-    />
+    <router-link
+      v-for="routeObj in routes"
+      :key="routeObj.id"
+      :to="getLocation(routeObj)"
+      custom
+      v-slot="{ navigate, isExactActive }"
+    >
+      <base-button
+        class="nav-bar-button tablet:orizzontal"
+        :icon="routeObj.icon"
+        :label="routeObj.label"
+        :aria-label="`Vai a ${routeObj.label}`"
+        :active="isExactActive"
+        @click="navigate"
+      />
+    </router-link>
   </nav>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { RawLocation } from "vue-router";
+import { NavConfig, navConfig } from "@/config/navigation";
 import BaseButton from "@/components/ui/BaseButton.vue";
 
 export default Vue.extend({
   name: "NavBar",
   components: {
     BaseButton,
+  },
+  data() {
+    return {
+      routes: navConfig,
+    };
+  },
+  methods: {
+    getLocation(routeObj: NavConfig): RawLocation {
+      let location: RawLocation = { name: routeObj.routeName };
+      if (routeObj.needZoneId) {
+        location.params = { zoneId: "zone-001" };
+        // ^ ^ ^ TODO: sostituire con quella dello store
+      }
+      return location;
+    },
   },
 });
 </script>

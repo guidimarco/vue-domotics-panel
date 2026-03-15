@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home</h1>
+    <h1>Clima</h1>
   </div>
 </template>
 
@@ -8,6 +8,6 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "HomeView",
+  name: "HvacView",
 });
 </script>

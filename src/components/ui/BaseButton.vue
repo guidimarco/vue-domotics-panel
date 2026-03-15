@@ -2,7 +2,8 @@
   <button
     v-if="icon || label"
     class="base-button"
-    @pointerdown.prevent="$emit('click')"
+    :class="{ 'text-primary': active }"
+    @pointerdown="$emit('click', $event)"
     :aria-label="ariaLabel"
   >
     <span v-if="icon" class="material-symbols-outlined">{{ icon }}</span>
@@ -26,6 +27,10 @@ export default Vue.extend({
     },
     label: {
       type: String,
+      required: false,
+    },
+    active: {
+      type: Boolean,
       required: false,
     },
   },
