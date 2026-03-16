@@ -36,7 +36,12 @@ export default {
     activeAv: (appState: AppState) => appState.active_av,
     loadingAv: (appState: AppState) => appState.loading_av,
     allowedZones: (appState: AppState) => appState.zone_ids,
-    enabledModules: (appState: AppState) => appState.enabled_modules,
+    enabledModules: (appState: AppState) => {
+      if (!appState.active_zone_id) return [];
+      return appState.enabled_modules.map((module: string) => {
+        return module.toLowerCase();
+      });
+    },
   },
   mutations: {
     SET_APP_STATE: (state: AppState, payload: Partial<AppState>) => {

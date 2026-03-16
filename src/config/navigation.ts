@@ -36,7 +36,7 @@ export const navConfig: Array<NavConfig> = [
     routeName: "lights",
     label: "Lights",
     icon: "lightbulb",
-    module: "lights",
+    module: "light",
     needZoneId: true,
   },
   {

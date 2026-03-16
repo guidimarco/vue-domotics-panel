@@ -21,6 +21,7 @@
 
     <div class="button-wrapper">
       <base-button
+        v-if="$route.meta && $route.meta.canControlAv"
         icon="power_settings_new"
         aria-label="Gestisci i dispositivi A/V"
         @click="toggleAvModal"
@@ -73,7 +74,7 @@ export default Vue.extend({
     toggleAvModal() {
       this.$root.$emit("toggle-modal", {
         modalId: "av-control-modal",
-        component: null,
+        component: "AvControl",
         props: {},
       });
     },

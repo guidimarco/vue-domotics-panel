@@ -2,8 +2,9 @@
   <div class="view-wrapper">
     <menu-wrapper title="Impostazioni">
       <template #default>
-        <div role="radiogroup" class="w-full grid grid-cols-3 gap-4">
+        <div role="radiogroup" class="grid grid-cols-3 lg:grid-cols-4 gap-4">
           <base-radio
+            class="flex justify-center"
             v-for="sat in satOptions"
             :key="sat"
             :id="sat"
@@ -19,7 +20,7 @@
 
     <menu-wrapper title="Visibilità delle Zone">
       <template #default>
-        <div class="w-full grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 lg:grid-cols-4 gap-4">
           <base-toggle
             v-for="zone in zones"
             :key="zone.id"

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center gap-4">
+  <div class="w-full flex flex-col justify-center gap-4">
     <h3 v-if="title" class="text-text font-medium text-2xl">{{ title }}</h3>
     <slot />
   </div>

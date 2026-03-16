@@ -32,6 +32,9 @@ const routes: Array<RouteConfig> = [
         path: "av",
         name: "av",
         component: AvView,
+        meta: {
+          canControlAv: true,
+        },
       },
       {
         path: "lights",

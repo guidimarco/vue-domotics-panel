@@ -22,6 +22,7 @@ import { ModalData } from "@/store/store.types";
 // Modali
 import ZoneMenu from "@/components/menus/ZoneMenu.vue";
 import AvMenu from "@/components/menus/AvMenu.vue";
+import AvControl from "@/components/menus/AvControl.vue";
 
 export default Vue.extend({
   name: "App",
@@ -31,6 +32,7 @@ export default Vue.extend({
     BaseModal,
     ZoneMenu,
     AvMenu,
+    AvControl,
   },
   computed: {
     ...mapGetters("modalStore", ["showModal", "modalData"]),

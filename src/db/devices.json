@@ -29,21 +29,21 @@
   },
   {
     "id": "dev-light-001",
-    "type": "lights",
+    "type": "light",
     "name": "Main Lights",
     "power": true,
     "data": { "level": 80 }
   },
   {
     "id": "dev-light-002",
-    "type": "lights",
+    "type": "light",
     "name": "Spotlights",
     "power": false,
     "data": { "level": 0 }
   },
   {
     "id": "dev-light-003",
-    "type": "lights",
+    "type": "light",
     "name": "LED Strip",
     "power": true,
     "data": { "level": 50 }

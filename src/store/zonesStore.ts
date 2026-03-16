@@ -22,6 +22,12 @@ export default {
     getAvDevices: (state: ZonesStore) => () => {
       return state.zone_devices.filter((device) => device.type === "av");
     },
+    getLightDevices: (state: ZonesStore) => () => {
+      return state.zone_devices.filter((device) => device.type === "light");
+    },
+    getHvacDevices: (state: ZonesStore) => () => {
+      return state.zone_devices.filter((device) => device.type === "hvac");
+    },
   },
   mutations: {
     SET_ZONE_VISIBILITY_MUTATION: (
@@ -31,6 +37,13 @@ export default {
       const zone = state.zones.find((zone) => zone.id === id) ?? null;
       if (zone && visible !== undefined) {
         zone.visible = visible;
+      }
+    },
+    SET_DEVICE_POWER_MUTATION: (state: ZonesStore, deviceId: string) => {
+      const device =
+        state.zone_devices.find((device) => device.id === deviceId) ?? null;
+      if (device) {
+        device.power = !device.power;
       }
     },
   },
@@ -61,23 +74,22 @@ export default {
             (zone) => zone.visible && zone.id !== zoneId
           );
           const nextVisibleZoneId = nextVisibleZone ? nextVisibleZone.id : null;
-          dispatch(
-            "appState/setActiveZoneId",
-            {
-              active_zone_id: nextVisibleZoneId,
-            },
-            { root: true }
-          );
+          dispatch("appState/setActiveZoneId", nextVisibleZoneId, {
+            root: true,
+          });
+          dispatch("appState/resetActiveAv", null, { root: true });
         } else if (!isVisible && !activeZoneId) {
           // ^ ^ ^ NON Visibile => Visibile
           // Se NON ci sono attive => la attivo
-          dispatch(
-            "appState/setActiveZoneId",
-            { active_zone_id: zoneId },
-            { root: true }
-          );
+          dispatch("appState/setActiveZoneId", zoneId, { root: true });
         }
       }
+    },
+    toggleDevicePower: async (
+      { commit }: ActionContext<ZonesStore, StoreState>,
+      deviceId: string
+    ) => {
+      commit("SET_DEVICE_POWER_MUTATION", deviceId);
     },
   },
 };
