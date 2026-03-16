@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-
+import store from "@/store";
 import HomeView from "../views/HomeView.vue";
 import SettingsView from "../views/SettingsView.vue";
 
@@ -21,6 +21,10 @@ const routes: Array<RouteConfig> = [
     path: "/settings",
     name: "settings",
     component: SettingsView,
+    beforeEnter: (to, from, next) => {
+      const isAdmin = store.getters["appState/isAdmin"];
+      isAdmin ? next() : next({ name: "home" });
+    },
   },
   {
     path: "/zones/:zoneId",

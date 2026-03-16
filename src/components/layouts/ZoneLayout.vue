@@ -18,11 +18,6 @@ export default Vue.extend({
   components: {
     AppHeader,
   },
-  computed: {
-    currentZone() {
-      return this.$route.params.zoneId;
-    },
-  },
 });
 </script>
 

@@ -48,7 +48,7 @@ export default {
     },
   },
   actions: {
-    toggleZoneVisibility: async (
+    toggleZoneVisibility: (
       {
         commit,
         state,
@@ -85,7 +85,7 @@ export default {
         }
       }
     },
-    toggleDevicePower: async (
+    toggleDevicePower: (
       { commit }: ActionContext<ZonesStore, StoreState>,
       deviceId: string
     ) => {

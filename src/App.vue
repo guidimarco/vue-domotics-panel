@@ -15,7 +15,6 @@
 <script lang="ts">
 import Vue from "vue";
 import { mapActions, mapGetters } from "vuex";
-import AppHeader from "@/components/layouts/AppHeader.vue";
 import NavBar from "@/components/layouts/NavBar.vue";
 import BaseModal from "@/components/ui/BaseModal.vue";
 import { ModalData } from "@/store/store.types";
@@ -27,7 +26,6 @@ import AvControl from "@/components/menus/AvControl.vue";
 export default Vue.extend({
   name: "App",
   components: {
-    AppHeader,
     NavBar,
     BaseModal,
     ZoneMenu,
@@ -49,6 +47,9 @@ export default Vue.extend({
     this.$root.$on("toggle-modal", (modalData: ModalData) => {
       this.toggleModal(modalData);
     });
+  },
+  beforeDestroy() {
+    this.$root.$off("toggle-modal");
   },
 });
 </script>

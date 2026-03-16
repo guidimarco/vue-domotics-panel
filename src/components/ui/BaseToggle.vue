@@ -24,8 +24,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
   name: "BaseToggle",
   props: {
     label: {
@@ -53,7 +55,7 @@ export default {
       default: false,
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

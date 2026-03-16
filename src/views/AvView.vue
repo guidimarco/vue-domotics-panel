@@ -19,11 +19,7 @@
           Select a source from the dropdown menu
         </div>
         <div v-else>
-          <img
-            class="max-h-[60vh]"
-            src="../../public/av_control.svg"
-            alt="Controllo A/V"
-          />
+          <img class="max-h-[60vh]" src="/av_control.svg" alt="Controllo A/V" />
         </div>
       </div>
     </template>

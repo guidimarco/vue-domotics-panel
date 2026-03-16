@@ -1,6 +1,5 @@
 import { ActionContext } from "vuex";
 import { StoreState, AppState } from "./store.types";
-import { Device } from "@/types/app.types";
 
 // Mock Data
 import sessionJson from "@/db/session.json";
@@ -54,22 +53,16 @@ export default {
       activeZoneId: string
     ) => {
       /**
-       * TODO: Aggiungere validazione:
+       * Aggiungere validazione:
        * - Validare active_zone_id rispetto alle zone ammesse dalla sessione (state.appState.zone_ids).
        * - Validare active_zone_id rispetto alle zone visibili (state.zones.zones).
        */
       commit("SET_APP_STATE", { active_zone_id: activeZoneId });
     },
-    setActiveAvId: (
+    setActiveAv: (
       { commit }: ActionContext<AppState, StoreState>,
       activeAvName: string
     ) => {
-      /**
-       * Workaround per semplificare:
-       * - gli passo un device invece di un id
-       * - use setTimeout per simulare una chiamata API
-       * - guardo loading_av dal componente
-       */
       commit("SET_APP_STATE", {
         active_av: activeAvName,
         loading_av: true,

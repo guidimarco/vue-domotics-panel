@@ -37,7 +37,7 @@ export default Vue.extend({
     };
   },
   computed: {
-    ...mapGetters("appState", ["isAdmin", "enabledModules"]),
+    ...mapGetters("appState", ["isAdmin", "enabledModules", "activeZoneId"]),
     visibleRoutes(): NavConfig[] {
       const self = this as any;
       return this.routes.filter((route) => {
@@ -52,8 +52,8 @@ export default Vue.extend({
     getLocation(routeObj: NavConfig): RawLocation {
       let location: RawLocation = { name: routeObj.routeName };
       if (routeObj.needZoneId) {
-        location.params = { zoneId: "zone-001" };
-        // ^ ^ ^ TODO: sostituire con quella dello store
+        const self = this as any;
+        location.params = { zoneId: self.activeZoneId };
       }
       return location;
     },

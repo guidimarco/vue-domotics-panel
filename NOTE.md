@@ -73,7 +73,7 @@ Ho scelto di non complicare troppo il layout, sia per agevolare l'usabilità sia
 
 Per visualizzare o nascondere la pagina impostazioni si è scelto di simulare una sessione in maniera molto semplificata. L'idea è quella di simulare un accesso non autenticato, `guest`, ad esempio tramite QR Code, oppure un accesso autenticato, `admin`, che garantisce l'accesso alla pagina delle impostazioni.
 
-Inoltre sono state aggiunte le informazioni che definiscono l'ambito di validità della sessione.
+Inoltre sono state aggiunte le informazioni che definiscono l'ambito di validità della sessione. Per semplicità sono calcolate sulla base dei file JSON di mock.
 
 ```json
 {
@@ -188,7 +188,7 @@ interface AppState {
     active_zone_id: string,
     // ^ ^ ^ Zona selezionata
     enabled_modules: Array<'av' | 'lights' | 'hvac'>,
-    // ^ ^ ^ Moduli visualizzabili: dipendono dai dispositivi associati alla zona
+    // ^ ^ ^ Moduli visualizzabili: per semplicità sono calcolati sul mock JSON
     active_av: string,
     loading_av: boolean,
     // ^ ^ ^ Dispositivo AV attivo (workaround per semplificare)

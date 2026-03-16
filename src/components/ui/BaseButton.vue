@@ -3,7 +3,7 @@
     v-if="icon || label"
     class="base-button"
     :class="{ 'text-primary': active }"
-    @pointerdown="$emit('click', $event)"
+    @pointerup="$emit('click', $event)"
     :aria-label="ariaLabel"
   >
     <span v-if="icon" class="material-symbols-outlined">{{ icon }}</span>

@@ -4,6 +4,7 @@ export interface StoreState {
   appState: AppState;
   settingsStore: SettingsStore;
   zonesStore: ZonesStore;
+  modalStore: ModalStore;
 }
 
 export interface AppState {
@@ -11,7 +12,7 @@ export interface AppState {
   unit_id: string;
   brand: string;
   zone_ids: string[];
-  active_zone_id: string;
+  active_zone_id: string | null;
   enabled_modules: string[];
   active_av: Device | null;
   loading_av: boolean;

@@ -1,10 +1,3 @@
-/**
- * NavConfig:
- * @param {string} id: unique identifier
- * @param {string} label: displayed text
- * @param {string} icon: icon to display
- * @param {string} path: route path
- */
 export interface NavConfig {
   id: string;
   routeName: string;

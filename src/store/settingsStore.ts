@@ -18,9 +18,6 @@ export default {
     selectedSatOption: (state: SettingsStore) => state.sat.selected,
   },
   mutations: {
-    SET_SETTINGS: (state: StoreState, payload: Partial<SettingsStore>) => {
-      state.settingsStore = { ...state.settingsStore, ...payload };
-    },
     SET_SELECTED_SAT: (state: SettingsStore, newValue: string) => {
       state.sat.selected = newValue;
     },

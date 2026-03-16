@@ -39,15 +39,15 @@ export default Vue.extend({
       const self = this as any;
       return self.getAvDevices().map((dev: Device) => {
         return {
-          icon: self.getAvDeviceIcon((dev.data as any)?.type),
           ...dev,
+          icon: self.getAvDeviceIcon((dev.data as any)?.type),
         };
       });
     },
   },
   methods: {
     ...mapActions("modalStore", ["closeModal"]),
-    ...mapActions("appState", ["setActiveAvId", "resetActiveAv"]),
+    ...mapActions("appState", ["setActiveAv", "resetActiveAv"]),
     getAvDeviceIcon(avType: string | null): string {
       const icons = new Map<string | null, string>([
         ["apple_tv", "apple"],
@@ -58,7 +58,7 @@ export default Vue.extend({
       return icons.get(avType) ?? "settings_input_component";
     },
     changeActiveAv(av: Device) {
-      this.setActiveAvId(av.name);
+      this.setActiveAv(av.name);
       this.closeModal();
     },
     turnOffAv() {
